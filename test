@@ -1,0 +1,28 @@
+// ==UserScript==
+// @name         Quillbot Premium Unlocker
+// @namespace    quillbot.taozhiyu.gitee.io
+// @version      0.2
+// @description  Unlocks Quillbot Premium so that you don't have to pay.
+// @author       longkidkoolstar
+// @match        https://quillbot.com/*
+// @icon         https://quillbot.com/favicon.png
+// @run-at       document-start
+// @grant        none
+// @license      none
+// ==/UserScript==
+/* global ajaxHooker*/
+(function() {
+    'use strict';
+    // How's it going filthy code looker
+    ajaxHooker.hook(request => {
+        if (request.url.endsWith('get-account-details')) {
+            request.response = res => {
+                const json=JSON.parse(res.responseText);
+                const a="data" in json?json.data:json;
+                a.profile.accepted_premium_modes_tnc=true;
+                a.profile.premium=true;
+                res.responseText=JSON.stringify("data" in json?(json.data=a,json):a);
+            };
+        }
+    });
+})();
