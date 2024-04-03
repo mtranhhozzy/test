@@ -6,7 +6,6 @@
 // @author       longkidkoolstar
 // @match        https://quillbot.com/*
 // @icon         https://quillbot.com/favicon.png
-// @require      https://greasyfork.org/scripts/455943-ajaxhooker/code/ajaxHooker.js?version=1124435
 // @run-at       document-start
 // @grant        none
 // @license      none
